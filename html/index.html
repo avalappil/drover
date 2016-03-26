@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport"
+         content="height = device-height, width = 420, user-scalable = no">
+      <title>Soul Robot</title>
+      <script type="text/javascript" src="/webiopi.js"></script>
+      <script>
+      webiopi().ready(function() {
+        var videoUrl = "http://" + window.location.hostname + ":8421?action=stream";
+        document.getElementsByClassName("trPic")[0].style.background = "url(" + videoUrl + ") no-repeat" 
+        });
+      </script>
+      <style type="text/css">
+         button.small {
+         margin: 1px 1px 1px 1px;
+         width: 24px;
+         height: 24px;
+         font-weight: bold;
+         color: black;
+         }
+         button {
+         background: none repeat scroll 0 0 #47B224;
+         color: #FFFFFF;
+         border-radius: 5px;
+         border: 5px;
+         font-size: 7pt;
+         height: 28px;
+         width: 60px;
+         }
+         .trPic .left {
+         background: url("arrow_left.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+         float: left;
+         height: 235px;
+         left: 480px;
+         margin-top: -77px;
+         opacity: 0.2;
+         width: 100px;
+         z-index: 20;
+         }
+         .trPic .right {
+         background: url("arrow_right.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+         float: right;
+         height: 235px;
+         left: 480px;
+         margin-top: -77px;
+         opacity: 0.2;
+         width: 100px;
+         z-index: 20;
+         }
+         .trPic .top {
+         background: url("arrow_top.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+         float: left;
+         height: 90px;
+         left: 480px;
+         opacity: 0.2;
+         top: 0;
+         width: 100px;
+         z-index: 20;
+         }
+         .trPic .bottom {
+         background: url("arrow_bottom.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+         float: right;
+         height: 90px;
+         left: 480px;
+         margin-top: -9px;
+         opacity: 0.2;
+         z-index: 20;
+         }
+         .trPic .stop{ 
+         position:absolute; 
+         top:140px;
+         left:160px; 
+         width:320px; 
+         height:200px;  
+         opacity:0.1;
+         z-index: 20;
+         background: url(stop.png) no-repeat;
+         background-position: center center; 
+         border:0px solid #000000;
+         } 
+         .trPic{ 
+         position:absolute; 
+         top:0px;
+         width:640px; 
+         height:320px; 
+         background: url(window.location.hostname + ':8421?action=stream') no-repeat; 
+         border:0px solid #000000; 
+         }  
+         .keyClass{ 
+        border: 0 solid #000000;
+        height: 240px;
+        margin-left: 217px;
+        margin-top: 351px;
+        top: 204px;
+        width: 329px;
+         }                  
+         .left:hover { 
+         opacity:0.7; 
+         }
+         .right:hover { 
+         opacity:0.7; 
+         }
+         .top:hover { 
+         opacity:0.7; 
+         }
+         .bottom:hover { 
+         opacity:0.7; 
+         }         
+         .stop:hover { 
+         opacity:0.7; 
+         }
+         .danger {
+         background-color: #d9534f;
+         border-color: #d43f3a;
+         color: #fff;
+         }
+         .info {
+         background-color: #5bc0de;
+         border-color: #46b8da;
+         color: #fff;
+         } 
+         .robotPic {
+        height: 413px;
+        margin-top: 260px;
+        padding: 0 34px 32px;
+        position: absolute;
+        top: 0;
+        width: 246px;
+         }    
+         .component {
+         background: none repeat scroll 0 0 #5bc0de;
+         border: 1px solid #46b8da;
+         height: 50px;
+         margin: auto;
+         width: 100px;
+         border-radius: 20px;
+         }
+         .mid {
+         margin-top: 14px;
+         }
+         .ubody {
+         background: none repeat scroll 0 0 #5bc0de;
+         height: 102px;
+         margin: 4px auto auto;
+         width: 126px;
+         }
+         .upperSec{
+         border: 1px solid #46b8da;
+         height: 102px;
+         margin: 4px auto auto;
+         width: 226px;            
+         }
+         .lshoulder{
+         float: left;
+         margin-left: 6px;
+         }
+         .rshoulder{
+         float:right;
+         margin-right: 6px;
+         } 
+         .lshld{
+         margin-bottom: 50px;
+         margin-top: -3px;
+         }
+         .rshld{
+         margin-bottom: 50px;
+         margin-top: -3px;
+         }   
+         .lhand{
+         }
+         .rhand{
+         }
+         .sbutton {
+         background: none repeat scroll 0 0 #fff;
+         border: 1px none;
+         border-radius: 2px;
+         font-size: 13px;
+         margin: 2px;
+         padding: 5px 10px;
+         width: 71px;
+         }    
+        .tbutton{
+        background:url("arrow_top.png");
+        background-repeat: no-repeat;
+        width:40px;
+        height:40px;
+        border: 0;
+        background-size:38px;
+        }    
+        .bbutton{
+        background:url("arrow_bottom.png");
+        background-repeat: no-repeat;
+        width:40px;
+        height:40px;
+        border: 0;
+        background-size:38px;
+        } 
+        .lbutton{
+        background:url("arrow_left.png");
+        background-repeat: no-repeat;
+        width:40px;
+        height:40px;
+        border: 0;
+        background-size:18px;
+        }    
+        .rbutton{
+        background:url("arrow_right.png");
+        background-repeat: no-repeat;
+        width:19px;
+        height:40px;
+        border: 0;
+        background-size:18px;
+        }        
+      </style>
+   </head>
+   <body>
+      <div id="content" style="height: 100%; width: 100%;">
+         <div id="video" class="trPic">
+         </div>
+         <div style="clear:both"></div>
+      </div>
+   </body>
+</html>

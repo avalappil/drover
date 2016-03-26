@@ -1,0 +1,1 @@
+document.getElementsByClassName("trPic")[0].style.background = "url(" + window.location.hostname + ":8421?action=stream) no-repeat" 
