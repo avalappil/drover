@@ -27,8 +27,16 @@ BIN1 = 24
 BIN2 = 25
 STBY = 22
 STARTPROGRAM = 26
+GREEN = 20
+RED = 16
+YELLOW = 21 
+
 ##
 ### Set all the drive pins as output pins
+GPIO.setup(GREEN, GPIO.OUT)
+GPIO.setup(RED, GPIO.OUT)
+GPIO.setup(YELLOW, GPIO.OUT)
+
 GPIO.setup(AIN1, GPIO.OUT)
 GPIO.setup(AIN2, GPIO.OUT) 
 GPIO.setup(BIN1, GPIO.OUT)
@@ -38,15 +46,23 @@ GPIO.setup(PWMA, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 GPIO.setup(STARTPROGRAM, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+GPIO.output(GREEN,GPIO.LOW)
+GPIO.output(RED,GPIO.LOW)
+GPIO.output(YELLOW,GPIO.HIGH)
+time.sleep(5)
 # initialize Serial driver
-espeak.synth("Please press PS3 start button, once connected press button in drover")
 waitForPS3 = 1
-
+GPIO.output(GREEN,GPIO.LOW)
+GPIO.output(RED,GPIO.LOW) 
 while (waitForPS3 == 1):
-  time.sleep(0.5)
+  time.sleep(0.5)  
+  
   try:
     print "starting"
     input_state = GPIO.input(STARTPROGRAM)
+    GPIO.output(YELLOW,GPIO.HIGH)
+    time.sleep(0.5)
+    GPIO.output(YELLOW,GPIO.LOW)
     if (input_state == False):
       print "button Pressed"
       print "found"
@@ -55,6 +71,9 @@ while (waitForPS3 == 1):
   except:
     print "waiting for controller"
 print "Connected"
+GPIO.output(YELLOW,GPIO.LOW)
+GPIO.output(GREEN,GPIO.HIGH)
+GPIO.output(RED,GPIO.LOW)
 
 # Initialise the pygame library
 pygame.init()
@@ -183,10 +202,16 @@ try:
           stb = j.get_button(3)
 
           if (ps == 1):
+            GPIO.output(YELLOW,GPIO.HIGH)
+            GPIO.output(GREEN,GPIO.HIGH)
+            GPIO.output(RED,GPIO.HIGH)            
             espeak.synth("Shutting down the drover in 10 seconds")
             time.sleep(8)
             espeak.synth("Good bye")
             time.sleep(2)
+            GPIO.output(YELLOW,GPIO.LOW)
+            GPIO.output(GREEN,GPIO.LOW)
+            GPIO.output(RED,GPIO.LOW)            
             subprocess.call('sudo shutdown -h now', shell=True)
 
           #print L2
